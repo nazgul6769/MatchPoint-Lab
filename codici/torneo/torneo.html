@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MatchPoint Lab — Torneo</title>
+  <link rel="stylesheet" href="torneo.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon">MP</div>
+      <div class="brand-text">
+        <h1>MatchPoint Lab</h1>
+        <span>Club &amp; Tournament</span>
+      </div>
+    </div>
+    <nav class="nav-menu">
+      <button class="nav-btn" data-target="../dashboard/dashboard.html">Dashboard</button>
+      <button class="nav-btn" data-target="../giocatori/giocatori.html">Giocatori</button>
+      <button class="nav-btn active" data-target="../torneo/torneo.html">Torneo</button>
+      <button class="nav-btn" data-target="../statistiche/statistiche.html">Statistiche</button>
+    </nav>
+    <div class="sidebar-footer">
+      MatchPoint Lab &bull; Motore Tornei
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <header class="page-header">
+      <div>
+        <h2>Configurazione &amp; Disputa Torneo</h2>
+        <p>Imposta formule, date, partecipanti senza partite consecutive e registra i punteggi</p>
+      </div>
+    </header>
+
+    <section class="card" id="setupCard">
+      <div class="card-title">
+        <h3>Parametri del Torneo</h3>
+        <span class="counter-pill">Partecipanti: <span id="participantsCounter">0</span></span>
+      </div>
+
+      <form id="tournamentForm" novalidate>
+        <div class="form-group">
+          <label for="tournamentTitle">Titolo Torneo *</label>
+          <input type="text" id="tournamentTitle" placeholder="Es. Open d'Autunno MatchPoint Lab" />
+          <div class="error-message" id="errTitle">Inserisci un titolo valido per il torneo (minimo 3 caratteri).</div>
+        </div>
+
+        <div class="form-group">
+          <label for="tournamentDesc">Descrizione</label>
+          <textarea id="tournamentDesc" rows="2" placeholder="Note regolamentari, superficie di gioco, montepremi..."></textarea>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="startDate">Data Inizio *</label>
+            <input type="date" id="startDate" />
+            <div class="error-message" id="errStartDate">Seleziona la data di inizio.</div>
+          </div>
+          <div class="form-group">
+            <label for="endDate">Data Fine *</label>
+            <input type="date" id="endDate" />
+            <div class="error-message" id="errEndDate">La data di fine deve essere uguale o successiva alla data di inizio.</div>
+          </div>
+        </div>
+
+        <div class="player-adder-box">
+          <label style="display:block; font-weight:700; color:var(--pine-dark); margin-bottom:8px;">
+            Aggiungi Giocatori al Torneo (minimo 3 giocatori)
+          </label>
+          <div class="player-adder-controls">
+            <select id="playerSelect">
+              <option value="">-- Seleziona giocatore dall'anagrafica --</option>
+            </select>
+            <button type="button" class="btn btn-ochre" id="btnAddPlayer">Aggiungi Giocatore</button>
+          </div>
+          <div class="error-message" id="errPlayers">Aggiungi almeno 3 giocatori per generare il tabellone senza incontri consecutivi.</div>
+          <div class="selected-players-list" id="selectedPlayersList"></div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="tournamentFormat">Fasi del Torneo *</label>
+            <select id="tournamentFormat">
+              <option value="girone_solo_andata">Girone solo andata</option>
+              <option value="girone_andata_ritorno">Girone andata e ritorno</option>
+              <option value="fasi_finali_solo_andata">Fasi finali solo andata (finale secca)</option>
+              <option value="fasi_finali_andata_ritorno">Fasi finali andata e ritorno (finale secca)</option>
+              <option value="gironi_sa_finali_sa">Gironi solo andata + Fasi finali solo andata (finale secca)</option>
+              <option value="gironi_sa_finali_ar">Gironi solo andata + Fasi finali andata e ritorno (finale secca)</option>
+              <option value="gironi_ar_finali_sa">Gironi andata e ritorno + Fasi finali solo andata (finale secca)</option>
+              <option value="gironi_ar_finali_ar">Gironi andata e ritorno + Fasi finali andata e ritorno (finale secca)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="bestOfSets">Formula Set *</label>
+            <select id="bestOfSets">
+              <option value="1">Set singolo (1 set)</option>
+              <option value="3" selected>Al meglio dei 3 set</option>
+              <option value="5">Al meglio dei 5 set</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-terracotta" id="btnGenerateTournament">Genera Torneo</button>
+      </form>
+    </section>
+
+    <section class="card matches-section" id="matchesSection">
+      <div class="card-title">
+        <h3 id="activeTournamentHeader">Tabellone Incontri</h3>
+        <button type="button" class="btn btn-pine" id="btnResetTournament">Nuovo Torneo</button>
+      </div>
+
+      <div id="phaseBanner" class="phase-banner"></div>
+      <div id="standingsContainer"></div>
+      <div id="matchesList" class="match-list"></div>
+
+      <div style="margin-top: 22px; display: flex; gap: 12px; flex-wrap: wrap;">
+        <button type="button" class="btn btn-pine" id="btnConfirmPhase">Conferma Risultati Fase</button>
+      </div>
+
+      <div id="podiumOutput"></div>
+    </section>
+  </main>
+
+  <script src="torneo.javascript"></script>
+</body>
+</html>

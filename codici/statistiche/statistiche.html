@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MatchPoint Lab — Statistiche</title>
+  <link rel="stylesheet" href="statistiche.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon">MP</div>
+      <div class="brand-text">
+        <h1>MatchPoint Lab</h1>
+        <span>Club &amp; Tournament</span>
+      </div>
+    </div>
+    <nav class="nav-menu">
+      <button class="nav-btn" data-target="../dashboard/dashboard.html">Dashboard</button>
+      <button class="nav-btn" data-target="../giocatori/giocatori.html">Giocatori</button>
+      <button class="nav-btn" data-target="../torneo/torneo.html">Torneo</button>
+      <button class="nav-btn active" data-target="../statistiche/statistiche.html">Statistiche</button>
+    </nav>
+    <div class="sidebar-footer">
+      MatchPoint Lab &bull; Archivio Analitico
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <header class="page-header">
+      <div>
+        <h2>Statistiche Dettagliate</h2>
+        <p>Storico completo di tutti i tornei disputati e rendimento analitico di ogni giocatore</p>
+      </div>
+      <input type="text" id="globalSearch" class="search-bar" placeholder="Cerca torneo o giocatore..." />
+    </header>
+
+    <div class="stats-sections">
+      <!-- PARTE 1: TORNEI -->
+      <section class="card">
+        <div class="card-title">
+          <h3>Sezione Tornei</h3>
+          <span class="badge-count" id="tournamentsCountBadge">0 tornei</span>
+        </div>
+        <div id="tournamentsStatsContainer"></div>
+      </section>
+
+      <!-- PARTE 2: GIOCATORI -->
+      <section class="card">
+        <div class="card-title">
+          <h3>Sezione Giocatori</h3>
+          <span class="badge-count" id="playersCountBadge">0 giocatori</span>
+        </div>
+        <div id="playersStatsContainer"></div>
+      </section>
+    </div>
+  </main>
+
+  <script src="statistiche.javascript"></script>
+</body>
+</html>

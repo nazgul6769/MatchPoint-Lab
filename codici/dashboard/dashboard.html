@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MatchPoint Lab — Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon">MP</div>
+      <div class="brand-text">
+        <h1>MatchPoint Lab</h1>
+        <span>Club &amp; Tournament</span>
+      </div>
+    </div>
+    <nav class="nav-menu">
+      <button class="nav-btn active" data-target="../dashboard/dashboard.html">Dashboard</button>
+      <button class="nav-btn" data-target="../giocatori/giocatori.html">Giocatori</button>
+      <button class="nav-btn" data-target="../torneo/torneo.html">Torneo</button>
+      <button class="nav-btn" data-target="../statistiche/statistiche.html">Statistiche</button>
+    </nav>
+    <div class="sidebar-footer">
+      MatchPoint Lab &bull; Gestione Tornei
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <header class="page-header">
+      <div>
+        <h2>Dashboard Generale</h2>
+        <p>Panoramica del circolo, podio dei più vincenti e teste di serie ufficiali</p>
+      </div>
+      <div class="header-badge" id="clubStatusBadge">Stagione Attiva</div>
+    </header>
+
+    <section class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">Giocatori Iscritti</div>
+        <div class="kpi-value" id="kpiPlayers">0</div>
+        <div class="kpi-sub">Anagrafica club</div>
+      </div>
+      <div class="kpi-card terracotta">
+        <div class="kpi-label">Tornei Disputati</div>
+        <div class="kpi-value" id="kpiTournaments">0</div>
+        <div class="kpi-sub">Completati e archiviati</div>
+      </div>
+      <div class="kpi-card ochre">
+        <div class="kpi-label">Set Giocati</div>
+        <div class="kpi-value" id="kpiSets">0</div>
+        <div class="kpi-sub">Totale incontri disputati</div>
+      </div>
+      <div class="kpi-card sage">
+        <div class="kpi-label">Game Totali</div>
+        <div class="kpi-value" id="kpiGames">0</div>
+        <div class="kpi-sub">Punti complessivi su campo</div>
+      </div>
+    </section>
+
+    <section class="dashboard-grid">
+      <div class="card">
+        <div class="card-title">
+          <h3>Podio — I 3 Più Vincenti</h3>
+          <span class="tag-pill">Classifica Vittorie</span>
+        </div>
+        <div id="podiumContainer"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">
+          <h3>Prime 3 Teste di Serie</h3>
+          <span class="tag-pill">Ranking Tecnico</span>
+        </div>
+        <div id="seedsContainer" class="seeds-list"></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-title">
+        <h3>Accesso Rapido Sezioni</h3>
+        <span class="tag-pill">Navigazione</span>
+      </div>
+      <div class="quick-actions">
+        <button class="btn-primary" data-target="../giocatori/giocatori.html">Gestisci Giocatori</button>
+        <button class="btn-terracotta" data-target="../torneo/torneo.html">Crea Nuovo Torneo</button>
+        <button class="btn-ochre" data-target="../statistiche/statistiche.html">Esplora Statistiche Complete</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="dashboard.javascript"></script>
+</body>
+</html>

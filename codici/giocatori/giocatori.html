@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MatchPoint Lab — Giocatori</title>
+  <link rel="stylesheet" href="giocatori.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon">MP</div>
+      <div class="brand-text">
+        <h1>MatchPoint Lab</h1>
+        <span>Club &amp; Tournament</span>
+      </div>
+    </div>
+    <nav class="nav-menu">
+      <button class="nav-btn" data-target="../dashboard/dashboard.html">Dashboard</button>
+      <button class="nav-btn active" data-target="../giocatori/giocatori.html">Giocatori</button>
+      <button class="nav-btn" data-target="../torneo/torneo.html">Torneo</button>
+      <button class="nav-btn" data-target="../statistiche/statistiche.html">Statistiche</button>
+    </nav>
+    <div class="sidebar-footer">
+      MatchPoint Lab &bull; Anagrafica Atleti
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <header class="page-header">
+      <div>
+        <h2>Gestione Giocatori</h2>
+        <p>Inserisci nuovi atleti, modifica i dati esistenti ed esporta/importa i salvataggi JSON</p>
+      </div>
+      <div class="json-controls">
+        <input type="file" id="fileInputJson" accept=".json" style="display:none" />
+        <button class="btn btn-ochre" id="btnLoadSaves">Carica salvataggi</button>
+        <button class="btn btn-terracotta" id="btnDownloadSaves">Scarica salvataggi</button>
+      </div>
+    </header>
+
+    <section class="card">
+      <div class="card-title">
+        <h3 id="formTitle">Nuovo Giocatore</h3>
+      </div>
+
+      <div id="editingBanner" class="editing-banner">
+        <span>Modalità modifica attiva per ID: <strong id="editingIdLabel"></strong></span>
+        <button type="button" class="btn-sm btn-ghost" id="btnCancelEdit">Annulla modifica</button>
+      </div>
+
+      <form id="playerForm">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="playerNome">Nome *</label>
+            <textarea id="playerNome" rows="1" placeholder="Inserisci il nome..." required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="playerCognome">Cognome *</label>
+            <textarea id="playerCognome" rows="1" placeholder="Inserisci il cognome..." required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="playerNickname">Nickname *</label>
+            <textarea id="playerNickname" rows="1" placeholder="Es. The Wall, Ace..." required></textarea>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-pine" id="btnSubmitPlayer">Salva Giocatore</button>
+          <button type="reset" class="btn btn-ghost" id="btnResetForm">Pulisci Campi</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card">
+      <div class="card-title">
+        <h3>Elenco Giocatori Registrati (<span id="playersCount">0</span>)</h3>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Cognome</th>
+              <th>Nickname</th>
+              <th>ID</th>
+              <th>Azioni</th>
+            </tr>
+          </thead>
+          <tbody id="playersTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast"></div>
+  <script src="giocatori.javascript"></script>
+</body>
+</html>
